@@ -4,6 +4,7 @@ const REQUIRED = "required";
 const MINIMUM = "min=";
 const MAXIMUM = "max=";
 const JUST = "just=";
+const NOCHAR = "nochar=";
 
 class Pouria {
     public $check = true;
@@ -73,6 +74,21 @@ class Pouria {
                             $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $message = str_replace(":value", join(" ", $characters), $message);
                             $this->messages[] = $message;
+                        }
+                        break;
+                    }
+                    case "nochar": {
+                        $characters = str_split($exploded_condition[1], 1);
+                        foreach ($characters as $character) {
+                            if (strstr($this->request[$name], $character)) {
+                                $this->check = false;
+                                $message = isset($this->custom_messages->nochar)
+                                    ? $this->custom_messages->nochar
+                                    : "in :key field you cannot use :value character(s)";
+                                $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
+                                $message = str_replace(":value", join(" ", $characters), $message);
+                                $this->messages[] = $message;
+                            }
                         }
                         break;
                     }
