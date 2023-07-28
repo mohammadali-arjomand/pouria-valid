@@ -192,6 +192,7 @@ class Pouria {
                             $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
                         }
+                        break;
                     }
                     case "haschar": {
                         $characters = str_split($exploded_condition[1], 1);
