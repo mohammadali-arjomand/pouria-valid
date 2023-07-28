@@ -6,6 +6,7 @@ const MAXIMUM = "max=";
 const JUST = "just=";
 const NOCHAR = "nochar=";
 const COUNT = "count=";
+const START = "start=";
 
 class Pouria {
     public $check = true;
@@ -102,6 +103,18 @@ class Pouria {
                                 $message = str_replace(":value", join(" ", $characters), $message);
                                 $this->messages[] = $message;
                             }
+                        }
+                        break;
+                    }
+                    case "start": {
+                        if (substr($this->request[$name], 0, strlen($exploded_condition[1])) != $exploded_condition[1]) {
+                            $this->check = false;
+                            $message = isset($this->custom_messages->start)
+                                ? $this->custom_messages->start
+                                : ":key field must start with :value";
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
+                            $message = str_replace(":value", $exploded_condition[1], $message);
+                            $this->messages[] = $message;
                         }
                         break;
                     }
