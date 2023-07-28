@@ -8,6 +8,7 @@ const JUST = "just=";
 class Pouria {
     public $check = true;
     public $messages = [];
+    public $labels = [];
     public $custom_messages = null;
     public function __construct($request) {
         $this->request = $request;
@@ -23,7 +24,7 @@ class Pouria {
                             $message = isset($this->custom_messages->required)
                                 ? $this->custom_messages->required
                                 : ":name is required";
-                            $message = str_replace(":key", $name, $message);
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $this->messages[] = $message;
                         }
                         break;
@@ -34,7 +35,7 @@ class Pouria {
                             $message = isset($this->custom_messages->min)
                                 ? $this->custom_messages->min
                                 : ":key minimum characters count is :value";
-                            $message = str_replace(":key", $name, $message);
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
                         }
@@ -46,7 +47,7 @@ class Pouria {
                             $message = isset($this->custom_messages->max)
                                 ? $this->custom_messages->max
                                 : ":key maximum characters count is :value";
-                            $message = str_replace(":key", $name, $message);
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
                         }
@@ -63,7 +64,7 @@ class Pouria {
                             $message = isset($this->custom_messages->just)
                                 ? $this->custom_messages->just
                                 : ":key only can contains :value";
-                            $message = str_replace(":key", $name, $message);
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $message = str_replace(":value", join(" ", $characters), $message);
                             $this->messages[] = $message;
                         }
@@ -75,5 +76,8 @@ class Pouria {
     }
     public function messages($decoded_json) {
         $this->custom_messages = $decoded_json;
+    }
+    public function labels($labels) {
+        $this->labels = $labels;
     }
 }
