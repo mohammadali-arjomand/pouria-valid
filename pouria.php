@@ -134,7 +134,7 @@ class Pouria {
                         break;
                     }
                     case "regex": {
-                        if (preg_replace($exploded_condition[1], "", $this->request[$name]) != "") {
+                        if (!preg_match($exploded_condition[1], $this->request[$name])) {
                             $this->check = false;
                             $message = isset($this->custom_messages->regex)
                                 ? $this->custom_messages->regex
