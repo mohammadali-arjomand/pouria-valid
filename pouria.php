@@ -13,6 +13,7 @@ const EMAIL = "email";
 const PHONE = "phone";
 const NUMBER = "number";
 const HAS = "has=";
+const HASCHAR = "haschar=";
 
 class Pouria {
     public $check = true;
@@ -191,6 +192,22 @@ class Pouria {
                             $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
                         }
+                    }
+                    case "haschar": {
+                        $characters = str_split($exploded_condition[1], 1);
+                        foreach ($characters as $character) {
+                            if (!strstr($this->request[$name], $character)) {
+                                $this->check = false;
+                                $message = isset($this->custom_messages->haschar)
+                                    ? $this->custom_messages->haschar
+                                    : "in :key field you must use :value character(s)";
+                                $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
+                                $message = str_replace(":value", join(" ", $characters), $message);
+                                $this->messages[] = $message;
+                                break;
+                            }
+                        }
+                        break;
                     }
                 }
             }
