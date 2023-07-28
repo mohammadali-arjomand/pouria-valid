@@ -12,6 +12,7 @@ const REGEX = "regex=";
 const EMAIL = "email";
 const PHONE = "phone";
 const NUMBER = "number";
+const HAS = "has=";
 
 class Pouria {
     public $check = true;
@@ -179,6 +180,17 @@ class Pouria {
                             $this->messages[] = $message;
                         }
                         break;
+                    }
+                    case "has": {
+                        if (!strstr($this->request[$name], $exploded_condition[1])) {
+                            $this->check = false;
+                            $message = isset($this->custom_messages->has)
+                                ? $this->custom_messages->has
+                                : ":key field must contains :value";
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
+                            $message = str_replace(":value", $exploded_condition[1], $message);
+                            $this->messages[] = $message;
+                        }
                     }
                 }
             }
