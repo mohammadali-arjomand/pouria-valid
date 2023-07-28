@@ -9,6 +9,7 @@ const COUNT = "count=";
 const START = "start=";
 const END = "end=";
 const REGEX = "regex=";
+const EMAIL = "email";
 
 class Pouria {
     public $check = true;
@@ -138,6 +139,18 @@ class Pouria {
                             $message = isset($this->custom_messages->regex)
                                 ? $this->custom_messages->regex
                                 : ":key field must follow rule";
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
+                            $message = str_replace(":value", $exploded_condition[1], $message);
+                            $this->messages[] = $message;
+                        }
+                        break;
+                    }
+                    case "email": {
+                        if (!filter_var($this->request[$name], FILTER_VALIDATE_EMAIL)) {
+                            $this->check = false;
+                            $message = isset($this->custom_messages->email)
+                                ? $this->custom_messages->email
+                                : ":key field is not a valid email";
                             $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
