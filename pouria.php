@@ -13,6 +13,12 @@ class Pouria {
     public function __construct($request) {
         $this->request = $request;
     }
+    public function messages($decoded_json) {
+        $this->custom_messages = $decoded_json;
+    }
+    public function labels($labels) {
+        $this->labels = $labels;
+    }
     public function conditions($conditions) {
         foreach ($conditions as $name => $conditions_list) {
             foreach ($conditions_list as $condition) {
@@ -73,11 +79,5 @@ class Pouria {
                 }
             }
         }
-    }
-    public function messages($decoded_json) {
-        $this->custom_messages = $decoded_json;
-    }
-    public function labels($labels) {
-        $this->labels = $labels;
     }
 }
