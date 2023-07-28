@@ -8,6 +8,7 @@ const NOCHAR = "nochar=";
 const COUNT = "count=";
 const START = "start=";
 const END = "end=";
+const REGEX = "regex=";
 
 class Pouria {
     public $check = true;
@@ -125,6 +126,18 @@ class Pouria {
                             $message = isset($this->custom_messages->end)
                                 ? $this->custom_messages->end
                                 : ":key field must end with :value";
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
+                            $message = str_replace(":value", $exploded_condition[1], $message);
+                            $this->messages[] = $message;
+                        }
+                        break;
+                    }
+                    case "regex": {
+                        if (preg_replace($exploded_condition[1], "", $this->request[$name]) != "") {
+                            $this->check = false;
+                            $message = isset($this->custom_messages->regex)
+                                ? $this->custom_messages->regex
+                                : ":key field must follow rule";
                             $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
