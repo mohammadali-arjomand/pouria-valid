@@ -109,6 +109,7 @@ class Pouria {
                                 $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                                 $message = str_replace(":value", join(" ", $characters), $message);
                                 $this->messages[] = $message;
+                                break;
                             }
                         }
                         break;
