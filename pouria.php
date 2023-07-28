@@ -72,7 +72,7 @@ class Pouria {
                             $this->check = false;
                             $message = isset($this->custom_messages->count)
                                 ? $this->custom_messages->count
-                                : ":key field should contains :value characters (no more, no less)";
+                                : ":key field must contains :value characters (no more, no less)";
                             $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
