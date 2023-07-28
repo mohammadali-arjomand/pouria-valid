@@ -3,6 +3,7 @@
 const REQUIRED = "required";
 const MINIMUM = "min=";
 const MAXIMUM = "max=";
+const JUST = "just=";
 
 class Pouria {
     public static function valid($check, $conditions) {
@@ -24,6 +25,17 @@ class Pouria {
                     }
                     case "max": {
                         if (strlen($check[$name]) > $exploded_condition[1]) {
+                            return false;
+                        }
+                        break;
+                    }
+                    case "just": {
+                        $characters = str_split($exploded_condition[1], 1);
+                        $value = $check[$name];
+                        foreach ($characters as $character) {
+                            $value = str_replace($character, "", $value);
+                        }
+                        if (!empty($value)) {
                             return false;
                         }
                         break;
