@@ -11,7 +11,7 @@ class Pouria {
                 $exploded_condition = explode("=", $condition);
                 switch ($exploded_condition[0]) {
                     case "required": {
-                        if (!isset($check[$name]) || is_null($check[$name])) {
+                        if (!isset($check[$name]) || is_null($check[$name]) || empty($check[$name])) {
                             return false;
                         }
                         break;
