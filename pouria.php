@@ -152,7 +152,6 @@ class Pouria {
                                 ? $this->custom_messages->email
                                 : ":key field is not a valid email";
                             $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
-                            $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
                         }
                         break;
