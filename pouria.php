@@ -7,6 +7,7 @@ const JUST = "just=";
 const NOCHAR = "nochar=";
 const COUNT = "count=";
 const START = "start=";
+const END = "end=";
 
 class Pouria {
     public $check = true;
@@ -112,6 +113,18 @@ class Pouria {
                             $message = isset($this->custom_messages->start)
                                 ? $this->custom_messages->start
                                 : ":key field must start with :value";
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
+                            $message = str_replace(":value", $exploded_condition[1], $message);
+                            $this->messages[] = $message;
+                        }
+                        break;
+                    }
+                    case "end": {
+                        if (substr($this->request[$name], strlen($this->request[$name])-strlen($exploded_condition[1]), strlen($this->request[$name])) != $exploded_condition[1]) {
+                            $this->check = false;
+                            $message = isset($this->custom_messages->end)
+                                ? $this->custom_messages->end
+                                : ":key field must end with :value";
                             $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
