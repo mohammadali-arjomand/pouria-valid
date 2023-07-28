@@ -5,6 +5,7 @@ const MINIMUM = "min=";
 const MAXIMUM = "max=";
 const JUST = "just=";
 const NOCHAR = "nochar=";
+const COUNT = "count=";
 
 class Pouria {
     public $check = true;
@@ -54,6 +55,18 @@ class Pouria {
                             $message = isset($this->custom_messages->max)
                                 ? $this->custom_messages->max
                                 : ":key field maximum characters count is :value";
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
+                            $message = str_replace(":value", $exploded_condition[1], $message);
+                            $this->messages[] = $message;
+                        }
+                        break;
+                    }
+                    case "count": {
+                        if (strlen($this->request[$name]) != $exploded_condition[1]) {
+                            $this->check = false;
+                            $message = isset($this->custom_messages->count)
+                                ? $this->custom_messages->count
+                                : ":key field should contains :value characters (no more, no less)";
                             $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $message = str_replace(":value", $exploded_condition[1], $message);
                             $this->messages[] = $message;
