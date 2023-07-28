@@ -34,7 +34,7 @@ git clone https://github.com/mohammadali-arjomand/pouria-valid.git
 require "https://raw.githubusercontent.com/mohammadali-arjomand/pouria-valid/main/pouria.php";
 ```
 ## Local
-[Download latest release]()
+[Download latest release](https://github.com/mohammadali-arjomand/pouria-valid/archive/refs/tags/v1.0.0.zip)
 
 # Documentation
 coming soon ...
