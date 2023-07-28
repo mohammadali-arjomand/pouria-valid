@@ -11,6 +11,7 @@ const END = "end=";
 const REGEX = "regex=";
 const EMAIL = "email";
 const PHONE = "phone";
+const NUMBER = "number";
 
 class Pouria {
     public $check = true;
@@ -163,6 +164,17 @@ class Pouria {
                             $message = isset($this->custom_messages->phone)
                                 ? $this->custom_messages->phone
                                 : ":key field is not a valid phone";
+                            $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
+                            $this->messages[] = $message;
+                        }
+                        break;
+                    }
+                    case "number": {
+                        if (!is_numeric($this->request[$name])) {
+                            $this->check = false;
+                            $message = isset($this->custom_messages->number)
+                                ? $this->custom_messages->number
+                                : ":key field is not number";
                             $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                             $this->messages[] = $message;
                         }
