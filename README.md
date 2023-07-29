@@ -9,7 +9,7 @@ Pouria valid is a lightweight, easy-to-use and powerful library for data validat
 ```php
 <?php
 
-require "src/pouria.php";
+use Arjomand\PouriaValid\Pouria;
 
 $pouria = new Pouria($_REQUEST);
 $pouria->conditions([
