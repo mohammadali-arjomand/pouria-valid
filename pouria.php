@@ -42,6 +42,7 @@ class Pouria {
                     $this->messages[] = $message;
                 }
                 else {
+                    echo "Hi";
                     switch ($exploded_condition[0]) {
                         case "required": {
                             if (!(isset($this->request[$name]) && !is_null($this->request[$name]) && !empty($this->request[$name]))) {
