@@ -14,9 +14,9 @@ use Arjomand\PouriaValid\Pouria;
 $pouria = new Pouria($_REQUEST);
 $pouria->conditions([
     "name" => [
-        REQUIRED,
-        MINIMUM . 5,
-        MAXIMUM . 16
+        "required",
+        "min=5",
+        "max=16"
     ]
 ]);
 
