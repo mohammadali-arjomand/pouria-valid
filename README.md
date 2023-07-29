@@ -9,7 +9,7 @@ Pouria valid is a lightweight, easy-to-use and powerful library for data validat
 ```php
 <?php
 
-require "https://raw.githubusercontent.com/mohammadali-arjomand/pouria-valid/main/pouria.php";
+require "src/pouria.php";
 
 $pouria = new Pouria($_REQUEST);
 $pouria->conditions([
@@ -25,19 +25,19 @@ echo $pouria->check ? "Data is valid" : "Data is invalid";
 
 # Installation
 You can install PouriaValid via ...
+## Composer
+```bash
+composer require arjomand/pouria-valid
+```
 ## Git
 ```bash
 git clone https://github.com/mohammadali-arjomand/pouria-valid.git
 ```
-## CDN
-```php
-require "https://raw.githubusercontent.com/mohammadali-arjomand/pouria-valid/main/pouria.php";
-```
 ## Local
-[Download latest release](https://github.com/mohammadali-arjomand/pouria-valid/archive/refs/tags/v1.0.0.zip)
+[Download latest release](https://github.com/mohammadali-arjomand/pouria-valid/archive/refs/tags/v1.1.1.zip)
 
 # Documentation
-coming soon ...
+For see documentation click [here](https://github.com/mohammadali-arjomand/pouria-valid/wiki)
 
 # License
 MIT License, Copyright (c) 2023 MohammadAli Arjomand
