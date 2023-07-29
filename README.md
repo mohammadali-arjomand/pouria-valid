@@ -6,7 +6,7 @@ Cartoon image from Pouria vali, an iranian hero &uarr;&uarr;&uarr;
 Pouria valid is a lightweight, easy-to-use and powerful library for data validation in PHP
 
 # Example
-It's a example from Pouria valid
+It's a example of Pouria valid
 ```php
 <?php
 
