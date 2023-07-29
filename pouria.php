@@ -35,7 +35,7 @@ class Pouria {
                 $exploded_condition = explode("=", $condition);
                 switch ($exploded_condition[0]) {
                     case "required": {
-                        if (!isset($this->request[$name]) || is_null($this->request[$name]) || empty($this->request[$name])) {
+                        if (!(isset($this->request[$name]) && !is_null($this->request[$name]) && !empty($this->request[$name]))) {
                             $this->check = false;
                             $message = isset($this->custom_messages->required)
                                 ? $this->custom_messages->required
