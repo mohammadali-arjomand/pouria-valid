@@ -37,23 +37,12 @@ class Pouria {
                     $this->check = false;
                     $message = isset($this->custom_messages->required)
                         ? $this->custom_messages->required
-                        : ":name field is required";
+                        : ":key field is required";
                     $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                     $this->messages[] = $message;
                 }
                 if (isset($this->request[$name])) {
                     switch ($exploded_condition[0]) {
-                        case "required": {
-                            if (!(isset($this->request[$name]) && !is_null($this->request[$name]) && !empty($this->request[$name]))) {
-                                $this->check = false;
-                                $message = isset($this->custom_messages->required)
-                                    ? $this->custom_messages->required
-                                    : ":name field is required";
-                                $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
-                                $this->messages[] = $message;
-                            }
-                            break;
-                        }
                         case "min": {
                             if (strlen($this->request[$name]) < $exploded_condition[1]) {
                                 $this->check = false;
