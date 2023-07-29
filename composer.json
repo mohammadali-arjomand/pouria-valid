@@ -1,0 +1,18 @@
+{
+    "name": "arjomand/pouria-valid",
+    "description": "A lightweight, easy-to-use and powerful library for data validation in PHP",
+    "type": "library",
+    "license": "MIT License",
+    "autoload": {
+        "psr-4": {
+            "Arjomand\\PouriaValid\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MohammadAli Arjomand",
+            "email": "ma.arjomand1387@gmail.com"
+        }
+    ],
+    "require": {}
+}
