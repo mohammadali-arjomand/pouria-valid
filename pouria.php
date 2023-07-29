@@ -41,7 +41,7 @@ class Pouria {
                     $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                     $this->messages[] = $message;
                 }
-                else {
+                if (isset($this->request[$namee])) {
                     switch ($exploded_condition[0]) {
                         case "required": {
                             if (!(isset($this->request[$name]) && !is_null($this->request[$name]) && !empty($this->request[$name]))) {
@@ -55,7 +55,6 @@ class Pouria {
                             break;
                         }
                         case "min": {
-                            echo "Hi";
                             if (strlen($this->request[$name]) < $exploded_condition[1]) {
                                 $this->check = false;
                                 $message = isset($this->custom_messages->min)
