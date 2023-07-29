@@ -2,21 +2,6 @@
 
 namespace Arjomand\PouriaValid;
 
-const REQUIRED = "required";
-const MINIMUM = "min=";
-const MAXIMUM = "max=";
-const JUST = "just=";
-const NOCHAR = "nochar=";
-const COUNT = "count=";
-const START = "start=";
-const END = "end=";
-const REGEX = "regex=";
-const EMAIL = "email";
-const PHONE = "phone";
-const NUMBER = "number";
-const HAS = "has=";
-const HASCHAR = "haschar=";
-
 class Pouria {
     public $check = true;
     public $messages = [];
