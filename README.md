@@ -34,7 +34,7 @@ composer require arjomand/pouria-valid
 git clone https://github.com/mohammadali-arjomand/pouria-valid.git
 ```
 ## Local
-[Download latest release](https://github.com/mohammadali-arjomand/pouria-valid/archive/refs/tags/v1.1.1.zip)
+[Download latest release](https://github.com/mohammadali-arjomand/pouria-valid/archive/refs/tags/v1.2.1.zip)
 
 # Documentation
 For see documentation click [here](https://github.com/mohammadali-arjomand/pouria-valid/wiki)
