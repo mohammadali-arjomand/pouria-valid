@@ -41,8 +41,8 @@ class Pouria {
                     $message = str_replace(":key", isset($this->labels[$name]) ? $this->labels[$name] : $name, $message);
                     $this->messages[] = $message;
                 }
-                var_dump(isset($this->request[$namee]));
-                if (isset($this->request[$namee])) {
+                var_dump(isset($this->request[$name]));
+                if (isset($this->request[$name])) {
                     switch ($exploded_condition[0]) {
                         case "required": {
                             if (!(isset($this->request[$name]) && !is_null($this->request[$name]) && !empty($this->request[$name]))) {
