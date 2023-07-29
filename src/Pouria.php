@@ -1,5 +1,7 @@
 <?php
 
+namespace Arjomand\PouriaValid;
+
 const REQUIRED = "required";
 const MINIMUM = "min=";
 const MAXIMUM = "max=";
