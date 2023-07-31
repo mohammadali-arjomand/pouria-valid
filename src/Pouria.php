@@ -16,6 +16,20 @@ class Pouria {
     public function labels($labels) {
         $this->labels = $labels;
     }
+    public function only($fields) {
+        $request = $this->request;
+        foreach ($fields as $field) {
+            if (isset($request[$field])) unset($request[$field]);
+        }
+        if (count($request) > 0) {
+            $this->check = false;
+            $message = isset($this->custom_messages->only)
+                ? $this->custom_messages->only
+                : "you can't send :key field(s)";
+            $message = str_replace(":key", join(" ", $request), $message);
+            $this->messages[] = $message;
+        }
+    }
     public function conditions($conditions) {
         foreach ($conditions as $name => $conditions_list) {
             foreach ($conditions_list as $condition) {
